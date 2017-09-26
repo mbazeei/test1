@@ -40,7 +40,8 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func btnYouTube(_ sender: UIButton) {
+    @IBAction func btnYouTube(_ sender: UIButton)
+    {
         UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
             self.sideMenuConst.constant = 0
             self.view1.frame.origin.y = self.menudown!
