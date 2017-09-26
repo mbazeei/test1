@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var view1: UIView!
     @IBOutlet weak var viewShadow: viewX!
     @IBOutlet weak var btnMenu: ButtonX!
+    @IBOutlet weak var viewSideMenu: UIView!
+    @IBOutlet weak var sideMenuConst: NSLayoutConstraint!
 
     @IBOutlet weak var lblslideValue: UILabel!
     
@@ -23,7 +25,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        self.view1.frame.origin.y = self.view.frame.height + self.view1.frame.height
+        viewSideMenu.layer.masksToBounds = true
+        viewSideMenu.layer.shadowColor = UIColor.red.cgColor
+        viewSideMenu.layer.shadowRadius = 10
+        
         menudown = self.view.frame.height - self.view1.frame.height + 60
         self.view1.frame.origin.y = self.menudown! + self.view1.frame.height
         UIView.animate(withDuration: 1.2, delay: 1, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
@@ -35,6 +40,19 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func btnYouTube(_ sender: UIButton) {
+        UIView.animate(withDuration: 1.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .allowUserInteraction, animations: {
+            self.sideMenuConst.constant = 0
+            self.view1.frame.origin.y = self.menudown!
+            self.viewShadow.transform = CGAffineTransform.identity
+            self.btnMenu.transform = CGAffineTransform.identity
+            self.view.layoutIfNeeded()
+        }) { (true) in
+            
+        }
+
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
